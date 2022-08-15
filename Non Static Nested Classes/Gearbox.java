@@ -8,46 +8,45 @@ public class Gearbox {
 
     public Gearbox(int maxGears) {
         this.maxGears = maxGears;
-        this.gears = new ArrayList<Gear>();
+        this.gears = new ArrayList<>();
         Gear neutral = new Gear(0, 0.0);
+        this.gears.add(neutral);
     }
 
-    public void clutchIsIn (boolean in) {
+    public void operateClutch(boolean in) {
         this.clutchIsIn = in;
     }
 
-    public void addGear (int number, double ratio) {
-        if (number > 0 && number <= maxGears)
+    public void addGear(int number, double ratio) {
+        if((number > 0) && (number <= maxGears)) {
             this.gears.add(new Gear(number, ratio));
+        }
     }
 
-    public void changeGear (int newGear) {
-        if (newGear >= 0 && newGear < this.gears.size() && this.clutchIsIn) {
+    public void changeGear(int newGear) {
+        if((newGear >= 0 ) && (newGear < this.gears.size()) && this.clutchIsIn) {
             this.currentGear = newGear;
             System.out.println("Gear " + newGear + " selected.");
-        }
-        else {
-            this.currentGear = 0;
+        } else {
             System.out.println("Grind!");
+            this.currentGear = 0;
         }
     }
 
-    public double wheelSpeed (int revs) {
-        if (this.clutchIsIn) {
-            System.out.println("Scream!");
+    public double wheelSpeed(int revs) {
+        if(clutchIsIn) {
+            System.out.println("Scream!!!");
             return 0.0;
         }
         return revs * gears.get(currentGear).getRatio();
     }
 
-    // This class is only applicable in context with the Gearbox class, hence it's
-    // an inner class. All public and private methods of Gearbox are accessible to
-    // Gear class (non-static inner class)
     private class Gear {
         private int gearNumber;
         private double ratio;
 
         public Gear(int gearNumber, double ratio) {
+
             this.gearNumber = gearNumber;
             this.ratio = ratio;
         }
@@ -56,8 +55,8 @@ public class Gearbox {
             return ratio;
         }
 
-        public double driveSpeed (int revs) {
-            return revs * (this.ratio);
+        public double driveSpeed(int revs) {
+            return revs *( this.ratio);
         }
     }
 }

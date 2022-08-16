@@ -8,10 +8,7 @@ public class Main {
         System.out.println(first.driveSpeed(1000));*/
 
         // using gearBox class with private inner class
-        /*Gearbox rx8 = new Gearbox(6);
-        rx8.addGear(1, 5.3);
-        rx8.addGear(2, 10.6);
-        rx8.addGear(3, 15.9);
+        Gearbox rx8 = new Gearbox(6);
         rx8.operateClutch(true);
         rx8.changeGear(1);
         rx8.operateClutch(false);
@@ -19,6 +16,7 @@ public class Main {
         rx8.changeGear(2);
         System.out.println(rx8.wheelSpeed(3000));
         rx8.operateClutch(true);
-        rx8.changeGear(3);*/
+        rx8.changeGear(3);
+        System.out.println(rx8.wheelSpeed(5000));
     }
 }

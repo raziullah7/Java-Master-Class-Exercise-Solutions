@@ -75,7 +75,7 @@ public class MyLinkedList implements NodeList {
                 return true;
             }
 
-            else {
+            else { // comparison == 0
                 // newItem and currentItem are equal(duplicate)
                 System.out.println(newItem.getValue() + " is already present, not added");
                 return false;
@@ -136,5 +136,13 @@ public class MyLinkedList implements NodeList {
                 root = root.next();
             }
         }
+        /*
+        // recursive way to traverse LinkedList (not recommended)
+        // Limit = 9,000,000,000,000,000,000 Nodes
+        if (root != null) {
+            System.out.println(root.getValue());
+            traverse(root.next());
+        }
+        */
     }
 }

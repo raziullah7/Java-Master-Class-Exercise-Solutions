@@ -1,12 +1,15 @@
 import java.util.ArrayList;
 
-public class Team {
+// bounded type arguments, Player is said to be upper bound of T
+public class Team<T extends Player> {
+// public class Team<T extends Player & Coach & Manager> {...}
+// but only player will be a class and remaining will be interfaces
     private String name;
     int played = 0;
     int won = 0;
     int lost = 0;
     int tied = 0;
-    private ArrayList<Player> members = new ArrayList<>();
+    private ArrayList<T> members = new ArrayList<>();
 
     public Team(String name) {
         this.name = name;
@@ -16,14 +19,25 @@ public class Team {
         return name;
     }
 
-    public boolean addPlayer(Player player) {
+
+    public boolean addPlayer(T player) {
         if (members.contains(player)) {
+//  this line gives an error unless it is explicitly cast in
+//  the required type (not recommended) (ugly AF)
+//            System.out.println(((Player) player).getName() + " is already in the team");
+            // the above cast is removed because of the bounded type argument due to
+            // which Player is said to be upper bound of T
             System.out.println(player.getName() + " is already in the team");
             return false;
         }
         else {
             members.add(player);
-            System.out.println(player.getName() + " picked for team " + this.name);
+//  this line gives an error unless it is explicitly cast in
+//  the required type (not recommended) (ugly AF)
+//            System.out.println(((Player) player).getName() + " is already in the team");
+            // the above cast is removed because of the bounded type argument due to
+            // which Player is said to be upper bound of T
+            System.out.println(player.getName() + " is already in the team");
             return true;
         }
     }
@@ -32,17 +46,27 @@ public class Team {
         return this.members.size();
     }
 
-    public void matchResult(Team opponent, int ourScore, int theirScore) {
-        if (ourScore > theirScore)
+
+    public void matchResult(Team<T> opponent, int ourScore, int theirScore) {
+        String message;
+        if (ourScore > theirScore) {
             won++;
-        else if (ourScore == theirScore)
+            message = " beat ";
+        }
+        else if (ourScore == theirScore) {
             tied++;
-        else
+            message = " drew with ";
+        }
+        else {
             lost++;
+            message = " lost to ";
+        }
         played++;
 
-        if (opponent != null)
+        if (opponent != null) {
+            System.out.println(this.getName() + message + opponent.getName());
             opponent.matchResult(null, theirScore, ourScore);
+        }
     }
 
     public int ranking() {

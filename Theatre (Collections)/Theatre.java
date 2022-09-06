@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class Theatre {
@@ -36,6 +38,45 @@ public class Theatre {
 
     // method to reserve a seat
     public boolean reserveSeat(String seatNumber) {
+        // binary search actual code
+        int low = 0;
+        int high = seats.size() - 1;
+        while (low <= high) {
+            // recalculates mid in every iteration
+            int mid = (low + high) / 2;
+            Seat midVal = seats.get(mid);
+            int compare = midVal.getSeatNumber().compareTo(seatNumber);
+
+            // required item is above the current mid-point
+            // move low-point 1 above the current mid-point
+            if (compare < 0)
+                low = mid + 1;
+            // required item is below the current mid-point
+            // move high-point 1 below the current mid-point
+            else if (compare > 0)
+                high = mid - 1;
+            // (comapre == 0) match found!
+            else
+                return midVal.reserve();
+        }
+        System.out.println("There is no seat " + seatNumber);
+        return false;
+//----------------------------------------------------------------------------------
+/*          // binary search method (much more efficient)
+        Seat requestedSeat = new Seat(seatNumber);
+        // using the binary search built-in method, which requires the
+        // Comparable interface to be implemented for the respective class
+        // foundSeat gets an int in the range -1 to 1
+        int foundSeat = Collections.binarySearch(seats, requestedSeat, null);
+        if (foundSeat >= 0)
+            return seats.get(foundSeat).reserve();
+        else {
+            System.out.println("There is no seat " + seatNumber);
+            return false;
+        }
+*/
+//----------------------------------------------------------------------------------
+/*          // brute force method
         Seat requestedSeat = null;
         for (Seat seat : seats) {
             if (seat.getSeatNumber().equals(seatNumber)) {
@@ -48,15 +89,27 @@ public class Theatre {
             return false;
         }
         return requestedSeat.reserve();
+*/
     }
 
-    // inner class Seat
-    public class Seat {
+            // inner class Seat
+    // implementing comparable interface to optimize searching
+    // otherwise it is like a brute force method, which is only working
+    // because Seat class has very few fields. Implementing comparable
+    // enables the binary search capabilities of List
+    public class Seat implements Comparable<Seat> {
         private final String seatNumber;
         private boolean reserved = false;
 
+        // constructor
         public Seat(String seatNumber) {
             this.seatNumber = seatNumber;
+        }
+
+        // implementing compareTo() for the comparable interface
+        @Override
+        public int compareTo(Seat seat) {
+            return this.seatNumber.compareToIgnoreCase(seat.getSeatNumber());
         }
 
         // getter

@@ -6,7 +6,7 @@ import java.util.List;
 public class Theatre {
     // fields
     private final String theatreName;
-    private List<Seat> seats = new ArrayList<>();
+    public List<Seat> seats = new ArrayList<>();
 
     public Theatre(String theatreName, int numberOfRows, int seatsPerRow) {
         this.theatreName = theatreName;
@@ -117,6 +117,7 @@ public class Theatre {
             return seatNumber;
         }
 
+        // method to book a reservation
         public boolean reserve() {
             if (!this.reserved) {
                 this.reserved = true;
@@ -126,13 +127,15 @@ public class Theatre {
             else return false;
         }
 
+        // method to cancel a reservation
         public boolean cancel() {
             if (this.reserved) {
                 this.reserved = false;
                 System.out.println("Reserved Seat " + seatNumber + " Cancelled");
                 return true;
             }
-            else return false;
+            else
+                return false;
         }
     }
 }

@@ -1,13 +1,28 @@
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Theatre {
     // fields
     private final String theatreName;
-    public List<Seat> seats = new ArrayList<>();
+    private List<Seat> seats = new ArrayList<>();
 
+    // this simply checks the property being compared, but
+    // Comparable checks the objects as equal
+    // Comparator is inconsistent with equals
+    // Comparable is consistent with equals
+    static final Comparator<Seat> PRICE_ORDER = new Comparator<Seat>() {
+        @Override
+        public int compare(Seat seat1, Seat seat2) {
+            // not sure what it does
+            // return Double.compare(seat1.getPrice(), seat2.getPrice());
+
+            if (seat1.getPrice() < seat2.getPrice())
+                return -1;
+            else if (seat1.getPrice() > seat2.getPrice())
+                return 1;
+            else
+                return 0;
+        }
+    };
     public Theatre(String theatreName, int numberOfRows, int seatsPerRow) {
         this.theatreName = theatreName;
 
@@ -19,7 +34,19 @@ public class Theatre {
         for (char row = 'A'; row <= lastRow; row++) {
             // for assigning numbers to seats and adding to the List (seats)
             for (int seatNum = 1; seatNum <= seatsPerRow; seatNum++) {
-                Seat seat = new Seat(row + String.format("%02d", seatNum));
+                double price = 12.00;
+                // price of first 3 rows is 14.00
+                // (not for first and last 4 seats which are near the edges)
+                if (row < 'D' && (seatNum >= 4 && seatNum <= 9)) {
+                    price = 14.00;
+                }
+                // price after row F is 7.00, also, starting from row D, the price
+                // for first and last 4 seats which are near the edges is 7.00
+                else if (row > 'F' || (seatNum < 4 || seatNum > 9)) {
+                    price = 7.00;
+                }
+                // adding the seat to the List<Seat>
+                Seat seat = new Seat(row + String.format("%02d", seatNum), price);
                 seats.add(seat);
             }
         }
@@ -31,13 +58,13 @@ public class Theatre {
     }
 
     // for testing
-    public void getSeats() {
-        for (Seat seat : seats)
-            System.out.println(seat.getSeatNumber());
+    public Collection<Seat> getSeats() {
+        return seats;
     }
 
     // method to reserve a seat
     public boolean reserveSeat(String seatNumber) {
+        /*
         // binary search actual code
         int low = 0;
         int high = seats.size() - 1;
@@ -55,9 +82,19 @@ public class Theatre {
             // move high-point 1 below the current mid-point
             else if (compare > 0)
                 high = mid - 1;
-            // (comapre == 0) match found!
+            // (compare == 0) match found!
             else
                 return midVal.reserve();
+        }
+        */
+
+        // originally written
+        Seat requestedSeat = new Seat(seatNumber, 0);
+        int foundSeat = Collections.binarySearch(seats, requestedSeat, null);
+        if (foundSeat > 0) {
+            seats.get(foundSeat).reserve();
+            System.out.println("Please pay for " + seatNumber);
+            return true;
         }
         System.out.println("There is no seat " + seatNumber);
         return false;
@@ -99,11 +136,13 @@ public class Theatre {
     // enables the binary search capabilities of List
     public class Seat implements Comparable<Seat> {
         private final String seatNumber;
+        private double price;
         private boolean reserved = false;
 
         // constructor
-        public Seat(String seatNumber) {
+        public Seat(String seatNumber, double price) {
             this.seatNumber = seatNumber;
+            this.price = price;
         }
 
         // implementing compareTo() for the comparable interface
@@ -112,9 +151,13 @@ public class Theatre {
             return this.seatNumber.compareToIgnoreCase(seat.getSeatNumber());
         }
 
-        // getter
+        // getters
         public String getSeatNumber() {
             return seatNumber;
+        }
+
+        public double getPrice() {
+            return price;
         }
 
         // method to book a reservation
@@ -124,7 +167,7 @@ public class Theatre {
                 System.out.println("Seat " + seatNumber + " Reserved");
                 return true;
             }
-            else return false;
+            return false;
         }
 
         // method to cancel a reservation
@@ -137,5 +180,8 @@ public class Theatre {
             else
                 return false;
         }
+
+        //
+
     }
 }

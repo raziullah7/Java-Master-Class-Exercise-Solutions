@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/Abstract Classes" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Abstract Classes Challenge" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Array Sorting" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ArrayList Basics" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Autoboxing &amp; Unboxing" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Banking (Autoboxing &amp; Unboxing)" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Basic Generics" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Bill Burgers (final polymorphism)" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Carpet Vendor" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Circle to Cylinder" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Complex Arithmetic" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Composition (Bedroom)" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Composition (PC)" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Constructors" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Generics Challenge" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Hello World" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Inner Classes Challenge" isTestSource="false" packagePrefix="com.timbuchalka" />
+      <sourceFolder url="file://$MODULE_DIR$/Lnked Lists" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Local and Anonmyous Classes" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Non Static Nested Classes" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Packages Challenge" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Packages(Graphics)" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Ploymorphic Movie" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Polymorphic Car" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Reverse Array" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Static Initialization" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Theatre (Collections)" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

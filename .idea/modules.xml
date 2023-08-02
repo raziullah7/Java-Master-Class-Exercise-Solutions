@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ByteIntShortLong/ByteIntShortLong.iml" filepath="$PROJECT_DIR$/ByteIntShortLong/ByteIntShortLong.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CharAndBoolean/CharAndBoolean.iml" filepath="$PROJECT_DIR$/CharAndBoolean/CharAndBoolean.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Interface Challenge/Interface Challenge.iml" filepath="$PROJECT_DIR$/Interface Challenge/Interface Challenge.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Java-Master-Class-Exercise-Solutions.iml" filepath="$PROJECT_DIR$/Java-Master-Class-Exercise-Solutions.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PoundsToKilograms/PoundsToKilograms.iml" filepath="$PROJECT_DIR$/PoundsToKilograms/PoundsToKilograms.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TestingPackageChallenge/TestingPackageChallenge.iml" filepath="$PROJECT_DIR$/TestingPackageChallenge/TestingPackageChallenge.iml" />
+    </modules>
+  </component>
+</project>

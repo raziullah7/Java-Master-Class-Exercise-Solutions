@@ -29,8 +29,11 @@ public class Main {
         // we could do this
         ArrayList<intClass> intClassArrayList = new ArrayList<>();
         intClassArrayList.add(new intClass(54));
-        Integer integer = new Integer(54);
-        Double doubleValue = new Double(12.25);
+        Integer integer = Integer.valueOf(54);       // unnecessary but preferred
+        Integer integer1 = 54;
+
+        Double doubleValue = Double.valueOf(12.25); // unnecessary but preferred
+        Double doubleValue2 = 12.25;
 
         ArrayList<Integer> intArrayList = new ArrayList<>();
         for (int i = 0; i <= 10; i++) {

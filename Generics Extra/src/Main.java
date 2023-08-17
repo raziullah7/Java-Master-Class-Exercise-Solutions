@@ -44,7 +44,7 @@ public class Main {
         // does not meet all the requirements, hence error
         // this is because Employee is a subtype of QueryList but not a subtype of
         // Student, therefore it causes an error
-        QueryList<Employee> employeeQueryList = new QueryList<>();
+//        QueryList<Employee> employeeQueryList = new QueryList<>();
     }
 
     public static void printMoreLists(List<? extends Student> students) {

@@ -1,8 +1,8 @@
 import java.util.Comparator;
 
 public class Employee {
-    // <T extends Employee> sets the upper bound, such that the parent of
-    // Employee does not become an inferred type during the cast
+    // <T extends Employee> sets the upper bound, such that the children of
+    // Employee class don't become an inferred type during the cast
     public static class EmployeeComparator<T extends Employee> implements Comparator<Employee> {
         private String sortType;
 

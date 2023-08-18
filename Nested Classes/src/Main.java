@@ -26,5 +26,36 @@ public class Main {
         for (Employee e : employees) {
             System.out.println(e);
         }
+
+//------------------------------------------------------------------------------------------
+
+        System.out.println("\nStore Members : ");
+
+        List<StoreEmployee> storeEmployees = new ArrayList<>(List.of(
+                new StoreEmployee(10015, "Ronald", 2015, "Target"),
+                new StoreEmployee(10515, "Caroline", 2021, "Walmart"),
+                new StoreEmployee(10105, "Jenny", 2013, "Meg"),
+                new StoreEmployee(10215, "Laura", 2020, "Decent"),
+                new StoreEmployee(10322, "Ali", 2018, "Al Rahim")
+        ));
+
+        // this actually uses the comparator for the parent class Employee
+        // we need an actual instance of the StoreEmployee to use its Comparator
+        var comparator = new StoreEmployee.EmployeeComparator<>();
+        storeEmployees.sort(comparator);
+
+        // this works
+        var genericEmployee = new StoreEmployee();
+        var comparator2 = genericEmployee.new StoreComparator<>();
+        storeEmployees.sort(comparator2);
+
+        // this also works
+        var comparator3 = new StoreEmployee().new StoreComparator<>();
+//        storeEmployees.sort(comparator3);
+
+        for (var emp : storeEmployees) {
+            System.out.println(emp);
+        }
+
     }
 }

@@ -26,5 +26,19 @@ public class Main {
         // if a variable is used in a lambda expression, it must be final
         // not be changed after the use in the lambda expression
 //        prefix = "Wait wait wait! This won't work! It's already final!!!";
+
+        System.out.println("\n----------------------------------------------");
+
+        // using "Integer" instead of "int" because the generics don't work with
+        // primitive types. So, we use the wrapper classes like Integer, Double, etc
+        var result = calculator((Integer a, Integer b) -> a + b, 5, 2);
+    }
+
+    // making a function that takes a lambda expression along with its
+    // arguments and returns the result of the passed lambda expression
+    public static <T> T calculator(Operation<T> function, T value1, T value2) {
+        T result = function.operate(value1, value2);
+        System.out.println("Result of Operation : " + result);
+        return result;
     }
 }

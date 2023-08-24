@@ -1,4 +1,7 @@
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -76,5 +79,41 @@ public class Main {
         // using "negate()" convenience method
         Predicate<String> combined3 = p3.and(p4).negate();
         System.out.println("Combined3 = " + combined3.test(name));
+
+        //-------------------------------------------------------------------------
+        System.out.println("--------------------------------------------");
+
+        record Person(String firstName, String lastName) {}
+
+        // creating a list
+        List<Person> list = new ArrayList<>(Arrays.asList(
+                new Person("King", "Shark"),
+                new Person("Gordon", "Ramsey"),
+                new Person("Ali", "Baba"),
+                new Person("John", "Wick")
+        ));
+        // sorting the list and printing it
+        list.sort((o1, o2) -> o1.lastName.compareTo(o2.lastName));
+        list.forEach(System.out::println);
+
+        System.out.println("--------------------------------------------");
+
+        // another way of sorting
+        list.sort(Comparator.comparing(Person::lastName));
+        list.forEach(System.out::println);
+
+        System.out.println("--------------------------------------------");
+
+        // sorting with multiple layers
+        list.sort(Comparator.comparing(Person::lastName)
+                .thenComparing(Person::firstName));
+        list.forEach(System.out::println);
+
+        System.out.println("--------------------------------------------");
+
+        // sorting with multiple layers with reverse order
+        list.sort(Comparator.comparing(Person::lastName)
+                .thenComparing(Person::firstName).reversed());
+        list.forEach(System.out::println);
     }
 }
